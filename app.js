@@ -3,7 +3,9 @@ const sizeEl = document.querySelector('.size')
 let size = sizeEl.value
 const color = document.querySelector('.color')
 const resetBtn = document.querySelector('.btn')
-const rainbowBtn = document.querySelector('rainbow') 
+const rainbowBtn = document.querySelector('.rainbow')
+
+
 
 let draw = false
 
@@ -20,19 +22,29 @@ function populate(size){
         div.addEventListener('mousedown', function(){
             div.style.backgroundColor = color.value;
         })
-        
-        
+
+        rainbowBtn.addEventListener('click', function(){
+            div.style.backgroundColor = getRandomColor();
+        })
 
 
-
+      
 
         container.appendChild(div)        
     }
 }
 
-function randomColor(){
-    
+function getRandomColor(){
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
 }
+
+
+
 
 window.addEventListener("mousedown", function(){
     draw = true
